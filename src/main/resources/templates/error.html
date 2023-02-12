@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Phrase API Test application</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Application Error</h1>
+    <hr>
+    <div th:text="${error}"/>
+    <hr>
+    <a th:href="@{/}">Back to Home</a>
+</div>
+</body>
+</html>

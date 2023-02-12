@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>TMS Account Configuration</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>TMS Account Configuration</h1>
+    <hr>
+    <h3>Update Config</h3>
+
+    <form action="#" th:action="@{/config}" th:object="${config}" method="POST">
+        Username
+        <input type="text" th:field="*{userName}" class="form-control mb-4 col-4">
+
+        Password
+        <input type="text" th:field="*{password}" class="form-control mb-4 col-4">
+
+        <button type="submit" class="btn btn-info col-2">Update Account Info</button>
+        <div th:text="${message}"/>
+    </form>
+
+    <hr>
+    <a th:href="@{/}">Back to Home</a>
+</div>
+</body>
+</html>
