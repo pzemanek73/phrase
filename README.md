@@ -10,6 +10,7 @@
 Open the following page in your browser (tested in Chrome):
 * http://localhost:8080/ to get to the main page of the application or go directly to
   * http://localhost:8080/config to access the TMS Account Config page
+    * You can use **pzemanek73/Letmein12345**
   * http://localhost:8080/projects to access the Projects page (TMS account needs to be set up first)
 
 ---
