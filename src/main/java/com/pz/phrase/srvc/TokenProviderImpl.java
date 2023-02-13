@@ -3,6 +3,8 @@ package com.pz.phrase.srvc;
 import com.pz.phrase.model.dto.AccountInfo;
 import com.pz.phrase.model.dto.TokenInfo;
 import com.pz.phrase.model.map.AccountConfigMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -15,6 +17,8 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class TokenProviderImpl implements TokenProvider {
 
+    Logger logger = LoggerFactory.getLogger(TokenProviderImpl.class);
+
     @Autowired
     AccountConfigService accountConfigService;
     @Value("${phrase.token.url}")
@@ -24,6 +28,7 @@ public class TokenProviderImpl implements TokenProvider {
     @Override
     public synchronized String getToken() {
         if (token == null) {
+            logger.info("Attempting to get token");
             try {
                 HttpHeaders headers = new HttpHeaders();
                 headers.add(HttpHeaders.USER_AGENT, "Homework app (pzemanek73@gmail.com)");
