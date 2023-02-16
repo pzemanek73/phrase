@@ -64,7 +64,7 @@ public class WebController {
 
     @GetMapping("/projects")
     public String viewProjectsPage(Model model) {
-        model.addAttribute("projects", projectsService.getProjects());
+        //model.addAttribute("projects", projectsService.getProjects());
         return "projects";
     }
 

@@ -17,10 +17,10 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class TokenProviderImpl implements TokenProvider {
 
-    Logger logger = LoggerFactory.getLogger(TokenProviderImpl.class);
+    private Logger logger = LoggerFactory.getLogger(TokenProviderImpl.class);
 
     @Autowired
-    AccountConfigService accountConfigService;
+    private AccountConfigService accountConfigService;
     @Value("${phrase.token.url}")
     private String tokenUrl;
     private String token = null; //"k2BT5dTw1CC9yqVo1v7y1YNU0X62l3tJ0KxNOV9Jx5uV5buTIUmBer7IElMyDQzFd";

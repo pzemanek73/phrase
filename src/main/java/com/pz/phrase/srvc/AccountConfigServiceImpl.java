@@ -10,7 +10,7 @@ public class AccountConfigServiceImpl implements AccountConfigService {
 
     public static String MAIN_CODE = "MAIN";
     @Autowired
-    AccountConfigRepository configRepository;
+    private AccountConfigRepository configRepository;
 
     @Override
     public AccountConfig getMainRow() {

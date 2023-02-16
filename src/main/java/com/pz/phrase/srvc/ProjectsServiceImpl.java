@@ -11,14 +11,19 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class ProjectsServiceImpl implements ProjectsService {
 
-    Logger logger = LoggerFactory.getLogger(ProjectsServiceImpl.class);
+    private Logger logger = LoggerFactory.getLogger(ProjectsServiceImpl.class);
 
     @Autowired
-    TokenProvider tokenProvider;
+    private TokenProvider tokenProvider;
 
     @Value("${phrase.projects.url}")
     private String projectsUrl;
@@ -32,8 +37,10 @@ public class ProjectsServiceImpl implements ProjectsService {
         headers.add(HttpHeaders.AUTHORIZATION, "ApiToken " + token);
         HttpEntity<Object> entity = new HttpEntity<>(headers);
 
+        URI uri = UriComponentsBuilder.fromUriString(projectsUrl).queryParam("pageNumber", "0" ).build().toUri();
+
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<ProjectsRoot> response = restTemplate.exchange(projectsUrl, HttpMethod.GET, entity, ProjectsRoot.class);
+        ResponseEntity<ProjectsRoot> response = restTemplate.exchange(uri, HttpMethod.GET, entity, ProjectsRoot.class);
 
         return response.getBody();
     }
